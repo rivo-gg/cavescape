@@ -1,5 +1,3 @@
-ARG INSTALLER=pnpm
-
 FROM node:20-alpine AS base
 
 # Install dependencies only when needed
@@ -11,12 +9,12 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN \
-  if [ "${INSTALLER}" == "yarn" ]; then yarn --frozen-lockfile; \
-  elif [ "${INSTALLER}" == "npm" ]; then npm ci; \
-  elif [ "${INSTALLER}" == "pnpm" ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-  else echo "Valid installer not set." && exit 1; \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
   fi
 
 
@@ -27,12 +25,11 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # RUN chmod u+x ./installer && ./installer
-ARG INSTALLER
 RUN \
-  if [ "${INSTALLER}" == "yarn" ]; then yarn build; \
-  elif [ "${INSTALLER}" == "npm" ]; then npm run build; \
-  elif [ "${INSTALLER}" == "pnpm" ]; then pnpm run build; \
-  else echo "Valid installer not set." && exit 1; \
+  if [ -f yarn.lock ]; then yarn run build; \
+  elif [ -f package-lock.json ]; then npm run build; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
+  else echo "Lockfile not found." && exit 1; \
   fi
 
 # Production image, just run the website
