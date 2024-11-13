@@ -1,4 +1,4 @@
-ARG INSTALLER=yarn
+ARG INSTALLER=pnpm
 
 FROM node:20-alpine AS base
 
@@ -35,9 +35,9 @@ RUN \
   else echo "Valid installer not set." && exit 1; \
   fi
 
-# Production image, copy all the files and run nginx
-FROM nginx:alpine AS runner
-COPY ./config/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-WORKDIR /usr/share/nginx/html
+# Production image, just run the website
+FROM base AS runner
+WORKDIR /app
+COPY --from=builder /app/dist /app/dist
+EXPOSE 3000
+CMD ["node", "dist/main.js"]
