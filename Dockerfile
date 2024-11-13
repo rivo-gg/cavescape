@@ -1,31 +1,31 @@
-FROM node:lts AS base
+FROM node:20-alpine AS base
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
+RUN corepack enable pnpm
+
+# By copying only the package.json and package-lock.json here, we ensure that the following `-deps` steps are independent of the source code.
+# Therefore, the `-deps` steps will be skipped if only the source code changes.
+COPY package.json pnpm-lpck.yaml ./
+
+FROM base AS prod-deps
+RUN pnpm install --omit=dev
 
 FROM base AS build-deps
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN pnpm install
 
 FROM build-deps AS build
 COPY . .
-RUN \
-  if [ -f yarn.lock ]; then yarn run build; \
-  elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN pnpm run build
 
 FROM base AS runtime
-COPY --from=prod-deps /app/node_modules ./node_modules
+COPY --from=prod-deps /app/node_modules ./node_modules 
 COPY --from=build /app/dist ./dist
 
+# Bind to all interfaces
 ENV HOST=0.0.0.0
+# Port to listen on
 ENV PORT=4321
+# Just convention, not required
 EXPOSE 4321
-CMD node ./dist/server/entry.mjs
+
+CMD node ./dist/server/entry.mjs # Start the app
