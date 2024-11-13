@@ -1,4 +1,4 @@
-FROM node:lts AS runtime
+FROM node:lts AS base
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
