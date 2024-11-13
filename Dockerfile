@@ -38,4 +38,4 @@ WORKDIR /app
 COPY --from=builder /app/dist /app/dist
 EXPOSE 3000
 
-CMD node ./dist/server/entry.mjs
+CMD node ./app/dist/server/entry.mjs
