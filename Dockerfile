@@ -37,4 +37,5 @@ FROM base AS runner
 WORKDIR /app
 COPY --from=builder /app/dist /app/dist
 EXPOSE 3000
-CMD ["node", "dist/main.js"]
+
+CMD node ./dist/server/entry.mjs
