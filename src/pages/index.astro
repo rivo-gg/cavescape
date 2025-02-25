@@ -1,9 +1,11 @@
 ---
+// biome-ignore lint/correctness/noUnusedImports: <explanation>
 import Layout from '../layouts/Layout.astro'
+// biome-ignore lint/correctness/noUnusedImports: <explanation>
 import { Page } from '@/components/page'
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Cavescape">
 	<main>
 		<Page client:only="react" />
 	</main>
