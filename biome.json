@@ -38,7 +38,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "nursery": {
+        "noImgElement": "off"
+      }
     }
   },
   "formatter": {
@@ -64,5 +67,6 @@
       "attributePosition": "auto",
       "bracketSpacing": true
     }
-  }
+  },
+  "extends": ["ultracite"]
 }

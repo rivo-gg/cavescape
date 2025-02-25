@@ -6,8 +6,8 @@ import {
   CarouselPrevious,
   type CarouselApi
 } from '@/components/ui/carousel'
+import { generateRandomKey } from '@/helpers/secret'
 import { cn } from '@/lib/utils'
-import { div } from 'motion/react-client'
 import { useEffect, useState } from 'react'
 
 interface ImageGalleryProps {
@@ -15,9 +15,10 @@ interface ImageGalleryProps {
     src: string
     alt: string
   }[]
+  className?: string
 }
 
-export function ImageGallery({ images }: ImageGalleryProps) {
+export function ImageGallery({ images, className }: ImageGalleryProps) {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
 
@@ -37,13 +38,17 @@ export function ImageGallery({ images }: ImageGalleryProps) {
     api?.scrollTo(index)
   }
 
+  const handleArrayKey = () => {
+    const key = generateRandomKey()
+    return key
+  }
+
   return (
-    <Carousel setApi={setApi}>
-      <div className="rounded-xl overflow-hidden">
+    <Carousel setApi={setApi} className={className}>
+      <div className="overflow-hidden rounded-xl">
         <CarouselContent>
-          {images.map((image, index) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-            <CarouselItem key={index}>
+          {images.map((image) => (
+            <CarouselItem key={handleArrayKey()}>
               <img
                 src={image.src}
                 alt={image.alt}
@@ -55,26 +60,26 @@ export function ImageGallery({ images }: ImageGalleryProps) {
           ))}
         </CarouselContent>
       </div>
-      <div className="flex gap-4 justify-between py-2">
+      <div className="flex justify-between gap-4 py-2">
         <div className="flex gap-2">
           <CarouselPrevious
             variant="outline"
-            className="static translate-y-0 size-10"
+            className="static size-10 translate-y-0"
           />
           <CarouselNext
             variant="outline"
-            className="static translate-y-0 size-10"
+            className="static size-10 translate-y-0"
           />
         </div>
         <div className="flex items-center gap-2">
-          {images.map((image, index) => (
+          {images.map((_, index) => (
             <span
-              key={image.src}
+              key={handleArrayKey()}
               className={cn(
-                'size-3 md:size-4 rounded-full cursor-pointer',
+                'size-3 cursor-pointer rounded-full md:size-4',
                 index === current - 1
                   ? 'bg-primary'
-                  : 'border md:border-2 border-white/25'
+                  : 'border border-white/25 md:border-2'
               )}
               onClick={() => handleIndex(index)}
               onKeyUp={(e) => e.key === 'Enter' && handleIndex(index)}

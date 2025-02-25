@@ -1,79 +1,80 @@
+'use client'
+
 import type { Item } from '@/data/items'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 export function ItemCard({ item }: { item: Item }) {
+  const [currentFrame, setCurrentFrame] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+
+  const isAnim = item.animation && item.animation.length > 0
+
+  useEffect(() => {
+    if (isAnim && isHovered) {
+      const interval = setInterval(() => {
+        if (item.animation && currentFrame !== item.animation.length - 1) {
+          setCurrentFrame(
+            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            (prevFrame) => (prevFrame + 1) % item.animation!.length
+          )
+        }
+      }, 250)
+
+      return () => clearInterval(interval)
+    }
+  }, [item.animation, isHovered, isAnim, currentFrame])
+
   return (
-    <div className="flex gap-4 items-start p-4 max-w-sm rounded-lg bg-accent hover:brightness-110 transition mr-4 cursor-default">
-      <div className="min-w-24 max-h-24 aspect-square bg-foreground/5 rounded-lg overflow-hidden ">
-        <img
-          src={item.image}
-          alt={item.name}
-          width={64}
-          height={64}
-          className="min-w-full min-h-full aspect-square object-cover"
-        />
+    <button
+      type="button"
+      className={cn(
+        'group mr-4 flex max-w-sm cursor-default items-center gap-4 rounded-lg bg-accent p-4 transition hover:brightness-110',
+        item.size === 'square' ? 'max-w-sm' : 'max-w-md'
+      )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false)
+        setCurrentFrame(0)
+      }}
+    >
+      <div
+        className={cn(
+          'flex max-h-24 min-h-24 w-full items-center overflow-hidden rounded-lg bg-foreground/5',
+          item.size === 'square' ? 'max-w-24' : 'max-w-36',
+          item.size === 'square' ? 'aspect-square' : 'aspect-video'
+        )}
+      >
+        {isAnim && isHovered && item.animation ? (
+          <img
+            src={item.animation[currentFrame]}
+            alt={item.name}
+            width={216}
+            height={216}
+            className={cn(
+              item.size === 'square' ? 'aspect-square' : 'aspect-video',
+              'min-h-full min-w-full object-cover'
+            )}
+          />
+        ) : (
+          <img
+            src={item.image}
+            alt={item.name}
+            width={216}
+            height={216}
+            className={cn(
+              item.size === 'square' ? 'aspect-square' : 'aspect-video',
+              'min-h-full min-w-full object-cover'
+            )}
+          />
+        )}
       </div>
-      <div>
-        <h3 className="text-lg font-semibold -mt-1 line-clamp-1">
+      <div className="text-start">
+        <h3 className="-mt-1 line-clamp-1 font-semibold text-lg">
           {item.name}
         </h3>
-        <p className="text-muted-foreground line-clamp-3">{item.description}</p>
+        <p className="line-clamp-3 text-muted-foreground">{item.description}</p>
       </div>
-    </div>
-  )
-}
-
-export function ItemCardWithTooltip({ item }: { item: Item }) {
-  return (
-    <TooltipProvider delayDuration={0}>
-      <Tooltip>
-        <TooltipTrigger className="flex gap-4 items-start p-4 max-w-sm rounded-lg bg-accent hover:brightness-110 transition mr-4 cursor-default">
-          <div className="min-w-24 max-h-24 aspect-square bg-foreground/5 rounded-lg overflow-hidden ">
-            <img
-              src={item.image}
-              alt={item.name}
-              width={64}
-              height={64}
-              className="min-w-full min-h-full aspect-square object-cover"
-            />
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold -mt-1 line-clamp-1">
-              {item.name}
-            </h3>
-            <p className="text-muted-foreground line-clamp-3">
-              {item.description}
-            </p>
-          </div>
-        </TooltipTrigger>
-        <TooltipContent className="z-index-50">
-          <Card>
-            <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Card Content</p>
-            </CardContent>
-            <CardFooter>
-              <p>Card Footer</p>
-            </CardFooter>
-          </Card>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    </button>
   )
 }
