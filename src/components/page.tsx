@@ -49,7 +49,7 @@ export function Page() {
               size="lg"
               className="bg-green-600 text-foreground hover:bg-green-700"
             >
-              <SteamIcon className="size-8 mr-1" />
+              <SteamIcon className='mr-1 size-8' />
               Wishlist on Steam
             </Button>
           </a>
@@ -143,9 +143,9 @@ export function Page() {
                   ([key, value]) => (
                     <li key={key}>
                       <span className="w-full md:flex md:justify-between">
-                        <text className="text-zinc-400 capitalize mr-2">
+                        <text className='text-zinc-400 capitalize'>
                           {key}:
-                        </text>
+                        </text>{' '}
                         {value}
                       </span>
                     </li>
@@ -160,9 +160,9 @@ export function Page() {
                   ([key, value]) => (
                     <li key={key}>
                       <span className="w-full md:flex md:justify-between">
-                        <text className="text-zinc-400 capitalize mr-2">
+                        <text className="mr-2 text-zinc-400 capitalize">
                           {key}:
-                        </text>{" "}
+                        </text>{' '}
                         {value}
                       </span>
                     </li>
@@ -197,5 +197,5 @@ export function Page() {
         </div>
       </section>
     </div>
-  );
+  )
 }

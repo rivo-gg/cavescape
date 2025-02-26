@@ -31,10 +31,10 @@ export function FloatingItem({
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      <img src={imageSrc} alt={name} className="w-24 h-24 object-contain" />
+      <img src={imageSrc} alt={name} className='h-24 w-24 object-contain' />
       {isHovered && (
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 bg-black/90 text-white p-4 rounded-lg w-48 pointer-events-none">
-          <h3 className="font-bold mb-1">{name}</h3>
+        <div className='-top-24 -translate-x-1/2 pointer-events-none absolute left-1/2 w-48 rounded-lg bg-black/90 p-4 text-white'>
+          <h3 className='mb-1 font-bold'>{name}</h3>
           <p className="text-sm">{description}</p>
         </div>
       )}
