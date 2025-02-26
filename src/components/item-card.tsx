@@ -40,9 +40,9 @@ export function ItemCard({ item }: { item: Item }) {
     >
       <div
         className={cn(
-          'flex max-h-24 min-h-24 w-full items-center overflow-hidden rounded-lg bg-foreground/5',
+          'flex h-full max-h-24 min-h-24 w-full items-center overflow-hidden rounded-lg bg-foreground/5',
           item.size === 'square' ? 'max-w-24' : 'max-w-36',
-          item.size === 'square' ? 'aspect-square' : 'aspect-video'
+          item.size === 'square' ? 'aspect-square' : 'aspect-auto'
         )}
       >
         {isAnim && isHovered && item.animation ? (
@@ -52,8 +52,8 @@ export function ItemCard({ item }: { item: Item }) {
             width={216}
             height={216}
             className={cn(
-              item.size === 'square' ? 'aspect-square' : 'aspect-video',
-              'min-h-full min-w-full object-cover'
+              item.size === 'square' ? 'aspect-square' : 'aspect-auto',
+              'h-full w-full object-cover'
             )}
           />
         ) : (
@@ -63,8 +63,8 @@ export function ItemCard({ item }: { item: Item }) {
             width={216}
             height={216}
             className={cn(
-              item.size === 'square' ? 'aspect-square' : 'aspect-video',
-              'min-h-full min-w-full object-cover'
+              item.size === 'square' ? 'aspect-square' : 'aspect-auto',
+              'h-full w-full object-cover'
             )}
           />
         )}
