@@ -1,7 +1,8 @@
 FROM node:20-alpine AS base
 WORKDIR /app
 
-RUN corepack enable pnpm
+# Update Corepack
+RUN corepack enable && npm i -g corepack@latest
 
 # By copying only the package.json and package-lock.json here, we ensure that the following `-deps` steps are independent of the source code.
 # Therefore, the `-deps` steps will be skipped if only the source code changes.
