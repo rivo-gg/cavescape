@@ -143,7 +143,7 @@ export function Page() {
                   ([key, value]) => (
                     <li key={key}>
                       <span className="w-full md:flex md:justify-between">
-                        <text className='text-zinc-400 capitalize'>
+                        <text className='mr-2 text-zinc-400 capitalize'>
                           {key}:
                         </text>{' '}
                         {value}
