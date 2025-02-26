@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ImageGallery } from './image-gallery'
-import { LinuxIcon, AppleIcon, WindowsIcon } from '@/icons'
+import { AndroidIcon, AppleIcon, SteamIcon, WindowsIcon } from '@/icons'
 import { images } from '@/data/images'
 import { systemRequirements } from '@/data/requirements'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -49,7 +49,8 @@ export function Page() {
               size="lg"
               className="bg-green-600 text-foreground hover:bg-green-700"
             >
-              Play Now
+              <SteamIcon className='mr-1 size-8' />
+              Wishlist on Steam
             </Button>
           </a>
           <a
@@ -142,7 +143,9 @@ export function Page() {
                   ([key, value]) => (
                     <li key={key}>
                       <span className="w-full md:flex md:justify-between">
-                        <text className="text-zinc-400 capitalize">{key}:</text>{' '}
+                        <text className='text-zinc-400 capitalize'>
+                          {key}:
+                        </text>{' '}
                         {value}
                       </span>
                     </li>
@@ -157,7 +160,9 @@ export function Page() {
                   ([key, value]) => (
                     <li key={key}>
                       <span className="w-full md:flex md:justify-between">
-                        <text className="text-zinc-400 capitalize">{key}:</text>{' '}
+                        <text className="mr-2 text-zinc-400 capitalize">
+                          {key}:
+                        </text>{' '}
                         {value}
                       </span>
                     </li>
@@ -182,11 +187,11 @@ export function Page() {
             </div>
             <div className="flex items-center gap-2">
               <AppleIcon className="size-8" />
-              <span className="text-lg">macOS</span>
+              <span className="text-lg">IOS</span>
             </div>
             <div className="flex items-center gap-2">
-              <LinuxIcon className="size-8" />
-              <span className="text-lg">Linux</span>
+              <AndroidIcon className="size-8" />
+              <span className="text-lg">Android</span>
             </div>
           </div>
         </div>
