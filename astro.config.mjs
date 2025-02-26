@@ -4,11 +4,11 @@ import nodejs from '@astrojs/node'
 import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
 
-import vercel from '@astrojs/vercel';
-
 export default defineConfig({
   output: 'server',
-  adapter: vercel(),
+  adapter: nodejs({
+    mode: 'standalone',
+  }),
   integrations: [
     tailwind({
       applyBaseStyles: false
