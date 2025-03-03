@@ -139,12 +139,13 @@ export function Page() {
             <div className="mx-auto w-fit rounded-lg bg-zinc-900 p-6 text-center md:text-start">
               <h3 className="mb-4 font-bold text-2xl">Minimum</h3>
               <ul className="space-y-2">
+                <li>Requires a 64-bit processor and operating system</li>
                 {Object.entries(systemRequirements.minimum).map(
                   ([key, value]) => (
                     <li key={key}>
-                      <span className="w-full md:flex md:justify-between">
-                        <text className="mr-2 text-zinc-400 capitalize">
-                          {key}:
+                      <span className="w-full">
+                        <text className="text-zinc-400 capitalize">
+                          {key === 'notes' ? 'Aditional Notes' : key}:
                         </text>{' '}
                         {value}
                       </span>
@@ -156,12 +157,13 @@ export function Page() {
             <div className="mx-auto w-fit rounded-lg bg-zinc-900 p-6 text-center md:text-start">
               <h3 className="mb-4 font-bold text-2xl">Recommended</h3>
               <ul className="space-y-2">
+                <li>Requires a 64-bit processor and operating system</li>
                 {Object.entries(systemRequirements.recommended).map(
                   ([key, value]) => (
                     <li key={key}>
-                      <span className="w-full md:flex md:justify-between">
-                        <text className="mr-2 text-zinc-400 capitalize">
-                          {key}:
+                      <span className="w-full ">
+                        <text className="text-zinc-400 capitalize">
+                          {key === 'notes' ? 'Aditional Notes' : key}:
                         </text>{' '}
                         {value}
                       </span>

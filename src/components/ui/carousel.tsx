@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import useEmblaCarousel, {
   type UseEmblaCarouselType
@@ -136,7 +138,6 @@ const Carousel = React.forwardRef<
           ref={ref}
           onKeyDownCapture={handleKeyDown}
           className={cn('relative', className)}
-          // biome-ignore lint/a11y/useSemanticElements: <dumb lint error>
           role="region"
           aria-roledescription="carousel"
           {...props}
