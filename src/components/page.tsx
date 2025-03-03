@@ -19,7 +19,7 @@ export function Page() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white">
+    <main className="min-h-screen bg-zinc-900 text-white">
       {/* Hero Section */}
       <section
         id="hero"
@@ -49,7 +49,7 @@ export function Page() {
               size="lg"
               className="bg-green-600 text-foreground hover:bg-green-700"
             >
-              <SteamIcon className='mr-1 size-8' />
+              <SteamIcon className="mr-1 size-8" />
               Wishlist on Steam
             </Button>
           </a>
@@ -143,7 +143,7 @@ export function Page() {
                   ([key, value]) => (
                     <li key={key}>
                       <span className="w-full md:flex md:justify-between">
-                        <text className='mr-2 text-zinc-400 capitalize'>
+                        <text className="mr-2 text-zinc-400 capitalize">
                           {key}:
                         </text>{' '}
                         {value}
@@ -196,6 +196,6 @@ export function Page() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

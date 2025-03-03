@@ -41,6 +41,10 @@
       "recommended": true,
       "nursery": {
         "noImgElement": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "off",
+        "noUnusedVariables": "off"
       }
     }
   },

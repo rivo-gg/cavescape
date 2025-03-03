@@ -7,7 +7,7 @@ import react from '@astrojs/react'
 export default defineConfig({
   output: 'server',
   adapter: nodejs({
-    mode: 'standalone',
+    mode: 'standalone'
   }),
   integrations: [
     tailwind({

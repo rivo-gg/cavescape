@@ -1,10 +1,10 @@
 type Requirements = {
-    os: string
-    processor: string
-    memory: string
-    graphics: string
-    storage: string
-  }
+  os: string
+  processor: string
+  memory: string
+  graphics: string
+  storage: string
+}
 export type SystemRequirements = {
   minimum: Requirements
   recommended: Requirements
