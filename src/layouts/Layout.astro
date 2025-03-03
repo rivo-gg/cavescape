@@ -1,26 +1,66 @@
 ---
-import { Footer } from '@/components/Footer.tsx'
-import '@/styles/globals.css'
+import { Footer } from "@/components/Footer.tsx";
+import "@/styles/globals.css";
 
 interface Props {
-  title: string
+  title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
+const siteUrl = "https://cavescapegame.com";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Escape a procedurally generated cave by grappling and swinging. Explore the depths of the ecosystem, fight foreign creatures, and upgrade your tools. Destructible environments, deep mechanics, and tough bosses!" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="min-h-screen flex flex-col">
-		<slot />
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Basic meta tags -->
+    <meta
+      name="description"
+      content="Escape a procedurally generated cave by grappling and swinging. Explore the depths of the ecosystem, fight foreign creatures, and upgrade your tools. Destructible environments, deep mechanics, and tough bosses!"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="pinterest-rich-pin" content="false" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Escape a procedurally generated cave by grappling and swinging. Explore the depths of the ecosystem, fight foreign creatures, and upgrade your tools. Destructible environments, deep mechanics, and tough bosses!"
+    />
+    <meta property="og:image" content={siteUrl + "/og-image.jpg"} />
+    <meta
+      property="og:image:alt"
+      content="Game screenshot showing cave exploration"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Escape a procedurally generated cave by grappling and swinging. Explore the depths of the ecosystem, fight foreign creatures, and upgrade your tools. Destructible environments, deep mechanics, and tough bosses!"
+    />
+    <meta name="twitter:image" content={siteUrl + "/og-image.jpg"} />
+    <meta
+      name="twitter:image:alt"
+      content="Game screenshot showing cave exploration"
+    />
+
+    <!-- Optional -->
+    <meta property="og:site_name" content="Cavescape" />
+    <meta property="og:locale" content="en_US" />
+	<meta name="theme-color" content="#16a34a" />
+	
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot />
     <Footer />
-	</body>
+  </body>
 </html>
