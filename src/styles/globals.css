@@ -45,3 +45,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+.pixelated {
+  image-rendering: pixelated;
+  /* biome-ignore lint/nursery/noDuplicateProperties: Biom is big dum dum */
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
