@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="404 - Choobyshroom Not Found">
+  <div class="flex flex-col items-center justify-center min-h-screen bg-zinc-900 text-white p-6 text-center">
+    <!-- 404 Header -->
+    <h1 class="text-5xl font-bold mb-10 text-white">404</h1>
+    
+    <!-- Extra large choobyshroom pixel sprite facing left -->
+    <div class="pixelated w-64 h-64 mb-10">
+      <img 
+        src="/staff/choobyshroom.png" 
+        alt="Pixel Art Choobyshroom"
+        class="w-full h-full object-contain transform -scale-x-100"
+      />
+    </div>
+    
+    <!-- Text message below choobyshroom -->
+    <p class="text-xl text-white mb-8 max-w-lg">
+     Cheese toast! This tunnel leads nowhere! We must head back to the main cavern.
+    </p>
+    
+    <!-- Green button -->
+    <a 
+      href="/" 
+      class="inline-block bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded transition-colors"
+    >
+      Return Home
+    </a>
+  </div>
+</Layout>
