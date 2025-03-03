@@ -18,7 +18,7 @@ export const systemRequirements: SystemRequirements = {
     memory: '8 GB RAM',
     graphics:
       'NVIDIA GeForce GTX 1660/GTX 1050-Ti, or AMD RX 470/RX 570, or equivalent performance & VRAM',
-    storage: '20 GB available space',
+    storage: '5 GB available space',
     notes: 'Internet connection required for multiplayer'
   },
   recommended: {
@@ -27,7 +27,7 @@ export const systemRequirements: SystemRequirements = {
       'Ryzen 5 5600X or i5-12400 or equivalent performance, 6 physical cores minimum',
     memory: '16 GB RAM',
     graphics: 'NVIDIA RTX 2070 or RX 5700, or equivalent performance & VRAM',
-    storage: '20 GB available space',
+    storage: '5 GB available space',
     notes: 'Internet connection required for multiplayer'
   }
 }
