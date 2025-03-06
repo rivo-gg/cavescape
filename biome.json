@@ -40,7 +40,8 @@
     "rules": {
       "recommended": true,
       "nursery": {
-        "noImgElement": "off"
+        "noImgElement": "off",
+        "noDuplicateProperties": "off"
       },
       "correctness": {
         "noUnusedImports": "off",

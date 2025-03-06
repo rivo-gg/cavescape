@@ -27,20 +27,18 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
       return
     }
 
-    setCurrent(api.selectedScrollSnap() + 1)
+    const updateCurrent = () => setCurrent(api.selectedScrollSnap() + 1)
 
-    api.on('select', () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
+    updateCurrent()
+    api.on('select', updateCurrent)
+
+    return () => {
+      api.off('select', updateCurrent)
+    }
   }, [api])
 
   const handleIndex = (index: number) => {
     api?.scrollTo(index)
-  }
-
-  const handleArrayKey = () => {
-    const key = generateRandomKey()
-    return key
   }
 
   return (
@@ -48,7 +46,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
       <div className="overflow-hidden rounded-xl">
         <CarouselContent>
           {images.map((image) => (
-            <CarouselItem key={handleArrayKey()}>
+            <CarouselItem key={image.src}>
               <img
                 src={image.src}
                 alt={image.alt}
@@ -74,7 +72,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
         <div className="flex items-center gap-2">
           {images.map((_, index) => (
             <span
-              key={handleArrayKey()}
+              key={index}
               className={cn(
                 'size-3 cursor-pointer rounded-full md:size-4',
                 index === current - 1

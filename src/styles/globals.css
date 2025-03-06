@@ -48,7 +48,17 @@
 
 .pixelated {
   image-rendering: pixelated;
-  /* biome-ignore lint/nursery/noDuplicateProperties: Biom is big dum dum */
   image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

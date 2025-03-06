@@ -63,7 +63,7 @@ const randomImage = images[Math.floor(Math.random() * images.length)].src
           <h2 class="mb-16 text-center font-bold text-3xl sm:text-4xl">
             Screenshots
           </h2>
-          <ImageGallery images={images} className="hidden sm:block" client:load client:only="react" />
+          <ImageGallery images={images} className="hidden sm:block" client:only="react" />
           <div class="flex flex-col gap-4 sm:hidden">
             {images.map((image) => (
               <img
