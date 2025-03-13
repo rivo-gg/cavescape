@@ -8,6 +8,15 @@ import { systemRequirements } from '@/data/requirements'
 import { ItemsSection } from '@/components/items-section'
 
 const randomImage = images[Math.floor(Math.random() * images.length)].src
+
+const userAgent = Astro.request.headers.get('user-agent')
+const ip = Astro.clientAddress
+
+// biome-ignore lint/suspicious/noConsoleLog: womp
+console.log('User Agent:', userAgent)
+// biome-ignore lint/suspicious/noConsoleLog: womp
+console.log('IP Address:', ip)
+
 ---
 <script type="application/ld+json">
 {
