@@ -1,45 +1,45 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { Button } from '@/components/ui/button'
-import { ImageGallery } from '@/components/image-gallery'
-import { AndroidIcon, AppleIcon, SteamIcon, WindowsIcon } from '@/icons'
-import { images } from '@/data/images'
-import { systemRequirements } from '@/data/requirements'
-import { ItemsSection } from '@/components/items-section'
+import Layout from "../layouts/Layout.astro";
+import { Button } from "@/components/ui/button";
+import { ImageGallery } from "@/components/image-gallery";
+import { AndroidIcon, AppleIcon, SteamIcon, WindowsIcon } from "@/icons";
+import { images } from "@/data/images";
+import { systemRequirements } from "@/data/requirements";
+import { ItemsSection } from "@/components/items-section";
 
-const randomImage = images[Math.floor(Math.random() * images.length)].src
+const randomImage = images[Math.floor(Math.random() * images.length)].src;
 ---
+
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "Making my Dream Game at 17 Years Old",
-  "description": "This is the entire story of how I made my dream game at 17",
-  "thumbnailUrl": "https://i.ytimg.com/vi/qlAeVHCt9N8/hqdefault.jpg",
-  "uploadDate": "2025-01-09T10:54:31-08:00",
-  "duration": "PT14M12S",
-  "contentUrl": "https://www.youtube.com/watch?v=qlAeVHCt9N8",
-  "embedUrl": "https://www.youtube.com/embed/qlAeVHCt9N8"
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Making my Dream Game at 17 Years Old",
+    "description": "This is the entire story of how I made my dream game at 17",
+    "thumbnailUrl": "https://i.ytimg.com/vi/qlAeVHCt9N8/hqdefault.jpg",
+    "uploadDate": "2025-01-09T10:54:31-08:00",
+    "duration": "PT14M12S",
+    "contentUrl": "https://www.youtube.com/watch?v=qlAeVHCt9N8",
+    "embedUrl": "https://www.youtube.com/embed/qlAeVHCt9N8"
+  }
 </script>
 
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "I made an entire Game about This...",
-  "description": "This is my first Steam game lol",
-  "thumbnailUrl": "https://i.ytimg.com/vi/qlAeVHCt9N8/hqdefault.jpg",
-  "uploadDate": "2024-09-14T02:31:45-07:00",
-  "duration": "PT6M16S",
-  "contentUrl": "https://www.youtube.com/watch?v=puEirG6phLQ",
-  "embedUrl": "https://www.youtube.com/embed/puEirG6phLQ"
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "I thought this Enemy was boring, but it saved my Game",
+    "description": "I thought this Enemy was boring, but it saved my Game",
+    "thumbnailUrl": "https://i.ytimg.com/vi/2X4SdjA2zNA/hqdefault.jpg",
+    "uploadDate": "2025-07-01T19:01:04Z",
+    "duration": "PT11M22S",
+    "contentUrl": "https://www.youtube.com/watch?v=2X4SdjA2zNA",
+    "embedUrl": "https://www.youtube.com/embed/2X4SdjA2zNA",
+  }
 </script>
 
 <Layout title="Cavescape">
   <main class="min-h-screen bg-zinc-900 text-white">
-    {/* Hero Section */}
     <section
       id="hero"
       class="relative flex h-screen items-center justify-center overflow-hidden"
@@ -86,19 +86,25 @@ const randomImage = images[Math.floor(Math.random() * images.length)].src
       </div>
     </section>
 
-    {/* Items Section */}
     <ItemsSection client:only="react" />
 
-    {/* Devlog Section */}
     <section id="devlog" class="py-24">
       <div class="container mx-auto px-4">
         <h2 class="mb-16 text-center font-bold text-3xl sm:text-4xl">
-          Watch our Devlogs
+          Watch our latest Devlogs
         </h2>
-        
-        {/* Responsive video grid */}
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* First iframe */}
+          <div class="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
+            <iframe
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/2X4SdjA2zNA"
+              title="I thought this Enemy was boring, but it saved my Game"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+
           <div class="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
             <iframe
               class="w-full h-full"
@@ -106,26 +112,14 @@ const randomImage = images[Math.floor(Math.random() * images.length)].src
               title="Making my Dream Game at 17 Years Old"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen />
-          </div>
-          
-          {/* Second iframe */}
-          <div class="aspect-video w-full overflow-hidden rounded-lg shadow-lg">
-            <iframe
-              class="w-full h-full"
-              src="https://www.youtube.com/embed/puEirG6phLQ"
-              title="Making my Dream Game at 17 Years Old"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen />
+              allowfullscreen></iframe>
           </div>
         </div>
-        {/* Link to YouTube channel */}
         <div class="mt-10 text-center">
-          <a 
-            href="https://www.youtube.com/@GargantuaGames" 
-            class=" font-medium text-foreground/80 underline-offset-2 hover:underline"
-            target="_blank" 
+          <a
+            href="https://www.youtube.com/@GargantuaGames"
+            class="font-medium text-foreground/80 underline-offset-2 hover:underline"
+            target="_blank"
             rel="noopener noreferrer"
           >
             Watch all devlogs on YouTube →
@@ -134,7 +128,6 @@ const randomImage = images[Math.floor(Math.random() * images.length)].src
       </div>
     </section>
 
-    {/* Screenshots Section */}
     <section id="gallery" class="py-24">
       <div class="container mx-auto px-4">
         <h2 class="mb-16 text-center font-bold text-3xl sm:text-4xl">
@@ -155,7 +148,6 @@ const randomImage = images[Math.floor(Math.random() * images.length)].src
       </div>
     </section>
 
-    {/* System Requirements Section */}
     <section id="requirements" class="py-24">
       <div class="container mx-auto px-4">
         <h2 class="mb-16 text-center font-bold text-3xl sm:text-4xl">
@@ -210,7 +202,6 @@ const randomImage = images[Math.floor(Math.random() * images.length)].src
       </div>
     </section>
 
-    {/* Platforms Section */}
     <section id="platforms" class="py-24">
       <div class="container mx-auto px-4 text-center">
         <h2 class="mb-8 font-bold text-3xl sm:text-4xl">Available Platforms</h2>

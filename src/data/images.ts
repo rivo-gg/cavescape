@@ -4,10 +4,11 @@ export type Image = {
 }
 
 export const images: Image[] = [
-  { src: '/Screenshot_1.png', alt: 'Cavescape Showcase 1' },
-  { src: '/Screenshot_2.png', alt: 'Cavescape Showcase 2' },
-  { src: '/Screenshot_3.png', alt: 'Cavescape Showcase 3' },
-  { src: '/Screenshot_4.png', alt: 'Cavescape Showcase 4' },
-  { src: '/Screenshot_5.png', alt: 'Cavescape Showcase 5' },
-  { src: '/Screenshot_6.png', alt: 'Cavescape Showcase 6' }
+  { src: 'screenshots/Screenshot_1.jpg', alt: 'Cavescape Showcase 1' },
+  { src: 'screenshots/Screenshot_2.jpg', alt: 'Cavescape Showcase 2' },
+  { src: 'screenshots/Screenshot_3.jpg', alt: 'Cavescape Showcase 3' },
+  { src: 'screenshots/Screenshot_4.jpg', alt: 'Cavescape Showcase 4' },
+  { src: 'screenshots/Screenshot_5.jpg', alt: 'Cavescape Showcase 5' },
+  { src: 'screenshots/Screenshot_6.jpg', alt: 'Cavescape Showcase 6' },
+  { src: 'screenshots/Screenshot_7.jpg', alt: 'Cavescape Showcase 7' }
 ]

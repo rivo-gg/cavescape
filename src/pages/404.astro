@@ -1,14 +1,11 @@
 ---
-// 404.astro
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="404 - Page Not Found">
   <div class="flex flex-col items-center justify-center min-h-screen bg-zinc-900 text-white p-6 text-center">
-    <!-- 404 Header -->
     <h1 class="text-5xl font-bold mb-10 text-white">404</h1>
     
-    <!-- Extra large dwarf pixel sprite facing left -->
     <div class="pixelated w-64 h-64 mb-10">
       <img 
         src="/staff/dwarf.png" 
@@ -17,12 +14,10 @@ import Layout from '../layouts/Layout.astro';
       />
     </div>
     
-    <!-- Text message below dwarf -->
     <p class="text-xl text-white mb-8 max-w-lg">
       By my beard! This tunnel leads nowhere! We must head back to the main cavern.
     </p>
     
-    <!-- Green button -->
     <a 
       href="/" 
       class="inline-block bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded transition-colors"
